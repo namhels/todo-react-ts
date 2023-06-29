@@ -1,14 +1,23 @@
 import React from 'react';
 import ITodo from '../types/data';
 
-interface ITodoItem extends ITodo {}
+interface ITodoItem extends ITodo {
+  removeTodo: (id: string) => void;
+  toggleTodo: (id: string) => void;
+}
 
-const TodoItem: React.FC<ITodoItem> = ({id, title, completed}) => {
+const TodoItem: React.FC<ITodoItem> = ({id, title, completed, removeTodo, toggleTodo}) => {
   return (
     <div>
-      <input type='checkbox' checked={completed} />
+      <input
+        type='checkbox'
+        checked={completed}
+        onChange={() => toggleTodo(id)}
+      />
       {title}
-      <button>delete</button>
+      <button
+        onClick={() => removeTodo(id)}
+      >delete</button>
     </div>
   )
 };
