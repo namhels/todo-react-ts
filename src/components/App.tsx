@@ -3,7 +3,10 @@ import { nanoid } from 'nanoid';
 
 import ITodo from '../types/data';
 import TodoList from './TodoList';
-import { TextField } from '@mui/material';
+import { Box, Button, Stack, TextField } from '@mui/material';
+
+// import { pink } from '@mui/material/colors';
+import { Send } from '@mui/icons-material';
 
 const App: React.FC = () => {
   const [value, setValue] = useState('');
@@ -56,24 +59,32 @@ const App: React.FC = () => {
   }
 
   return (
-    <div>
-      <div>
+    <Box mt={25} ml='58%'>
+      <Stack direction="row" spacing={2}>
         <TextField
           label="todo"
-          variant="filled"
+          variant="outlined"
+          size="small"
+          // sx={{ color: pink[500] }}
+          color="warning"
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           ref={inputRef}
         />
-        <button onClick={addTodo}>Add</button>
-      </div>
+        <Button
+          variant="contained"
+          color="info"
+          endIcon={<Send />}
+          onClick={addTodo}
+        >Add</Button>
+      </Stack>
       <TodoList
         items={todos}
         removeTodo={removeTodo}
         toggleTodo={toggleTodo}
       />
-    </div>
+    </Box>
   )
 }
 
