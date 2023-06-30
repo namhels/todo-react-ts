@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 
 import ITodo from '../types/data';
 import TodoList from './TodoList';
+import { TextField } from '@mui/material';
 
 const App: React.FC = () => {
   const [value, setValue] = useState('');
@@ -19,6 +20,7 @@ const App: React.FC = () => {
 
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    e.preventDefault();
     setValue(e.target.value)
   }
 
@@ -54,13 +56,16 @@ const App: React.FC = () => {
   }
 
   return (
-    <>
+    <div>
       <div>
-        <input
+        <TextField
+          label="todo"
+          variant="filled"
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          ref={inputRef} />
+          ref={inputRef}
+        />
         <button onClick={addTodo}>Add</button>
       </div>
       <TodoList
@@ -68,7 +73,7 @@ const App: React.FC = () => {
         removeTodo={removeTodo}
         toggleTodo={toggleTodo}
       />
-    </>
+    </div>
   )
 }
 
