@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import ITodo from '../types/data';
+import { List } from '@mui/material';
 
 interface ITodoListProps {
   items: ITodo[];
@@ -10,7 +11,7 @@ interface ITodoListProps {
 
 const TodoList: React.FC<ITodoListProps> = ({items, removeTodo, toggleTodo}) => {
   return (
-    <div>
+    <List sx={{ width: '100%', maxWidth: 360}}>
       {
         items.map(todo =>
           <TodoItem
@@ -20,7 +21,7 @@ const TodoList: React.FC<ITodoListProps> = ({items, removeTodo, toggleTodo}) => 
             {...todo}
           />)
       }
-    </div>
+    </List>
   )
 };
 

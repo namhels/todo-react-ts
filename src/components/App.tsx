@@ -5,8 +5,7 @@ import ITodo from '../types/data';
 import TodoList from './TodoList';
 import { Box, Button, Stack, TextField } from '@mui/material';
 
-// import { pink } from '@mui/material/colors';
-import { Send } from '@mui/icons-material';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 const App: React.FC = () => {
   const [value, setValue] = useState('');
@@ -65,7 +64,6 @@ const App: React.FC = () => {
           label="todo"
           variant="outlined"
           size="small"
-          // sx={{ color: pink[500] }}
           color="warning"
           value={value}
           onChange={handleChange}
@@ -75,7 +73,7 @@ const App: React.FC = () => {
         <Button
           variant="contained"
           color="info"
-          endIcon={<Send />}
+          endIcon={<PlaylistAddIcon />}
           onClick={addTodo}
         >Add</Button>
       </Stack>
